@@ -23,7 +23,7 @@ def plot_learning_curves(agents, stages, lidar):
         
         for agent in agents:
             if int(_lidar) == 0:
-                lidar = 360 if agent == 'dreamer' else 10
+                lidar = 360 if agent == 'ours' else 10
             # fpath = f'best_models/lidar{lidar}/{agent}/stage{stage}/train.csv'
             fpath = f'best_models/lidar{lidar}/{agent}/curricular/train.csv'
             data = pd.read_csv(fpath)
@@ -44,10 +44,10 @@ def plot_learning_curves(agents, stages, lidar):
             ma_episodes = ma_episodes[:max_episode]
             std_episodes = std_episodes[:max_episode]
             
-            name = agent if agent != 'dreamer' else 'TurtleDreamer (ours)'
+            name = agent if agent != 'ours' else 'Turtleours (ours)'
             colormap = plt.colormaps.get_cmap(colormaps[agent])
             
-            if agent == 'dreamer':
+            if agent == 'ours':
                 main_alpha = 1.0
                 std_alpha = 0.4
                 color = 'darkgreen'
@@ -81,9 +81,8 @@ def plot_learning_curves(agents, stages, lidar):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot multiple RL agents' training learning curves")
     parser.add_argument('--stages', type=int, nargs='+', default=[1, 2, 3, 4, 5, 6], help='Specify the environment stages: e.g., 1 2 3 4')
-    parser.add_argument('--lidar', type=int, default=-1, help='Specify the lidar readings: 10 or 360, 0 for dreamer 360 others 10 comparison')
+    parser.add_argument('--lidar', type=int, default=-1, help='Specify the lidar readings: 10 or 360, 0 for ours 360 others 10 comparison')
     args = parser.parse_args()
 
-    # agents = ['ddpg', 'sac', 'td3', 'sac_x_hybrid']
-    agents = ['sac_x_hybrid']
+    agents = ['ddpg', 'sac', 'td3', 'sac_x_hybrid']
     plot_learning_curves(agents, args.stages, args.lidar)
