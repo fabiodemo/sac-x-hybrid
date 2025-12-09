@@ -5,8 +5,8 @@ Training Deep Reinforcement Learning algorithms in the TurtleBot3 navigation tas
 - Implemented DRL algorithms - Dreamerv3, SAC, DDPG, TD3
 <br>
 
-| Stage 6 | Stage 4 |
-| --- | --- |
+| Stage 6                                                                                                                       | Stage 4                                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | <img src="https://github.com/raulsteinmetz/turtlebot3-drl/assets/85199336/9f881aac-f87b-4b63-a323-655b47e3a18f" width="200"/> | <img src="https://github.com/raulsteinmetz/turtlebot3-drl/assets/85199336/007d7844-ebdb-47c3-b318-69e393d3c91d" width="200"/> |
 
 
@@ -20,7 +20,6 @@ Refer to `./TRAIN.md`
 
 ## Folder Structure
 - `./best_models` contains train and test information from algorithms and trained models
-- `./dreamerv3-torch` holds code for the TurtleDreamer algorithm (Dreamerv3 for TurtleBot3)
 - `./model_free` holds the implementations of sac, ddpg and td3
 - `./models` keeps models and logs while the algorithms are training
 - `./plots` keeps comparisson plots in pdf format
@@ -33,3 +32,7 @@ Refer to `./TRAIN.md`
 - [danijar/dreamerv3](https://github.com/danijar/dreamerv3)
 - [philtabor/Actor-Critic-Methods-Paper-To-Code](https://github.com/philtabor/Actor-Critic-Methods-Paper-To-Code)
 - [dranaju/project](https://github.com/dranaju/project)
+- [raulsteinmetz/turtlebot-dreamerv3](https://github.com/raulsteinmetz/turtlebot-dreamerv3)
+
+## The code for this repository is a joint effort with:
+- [raulsteinmetz/turtlebot-dreamerv3](https://github.com/raulsteinmetz/turtlebot-dreamerv3)
