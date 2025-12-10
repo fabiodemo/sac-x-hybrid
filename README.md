@@ -78,7 +78,6 @@ The code on this repository was inspired by:
 - [danijar/dreamerv3](https://github.com/danijar/dreamerv3)
 - [philtabor/Actor-Critic-Methods-Paper-To-Code](https://github.com/philtabor/Actor-Critic-Methods-Paper-To-Code)
 - [dranaju/project](https://github.com/dranaju/project)
-- [raulsteinmetz/turtlebot-dreamerv3](https://github.com/raulsteinmetz/turtlebot-dreamerv3)
 
 This repository is a joint effort with:
 - [raulsteinmetz/turtlebot-dreamerv3](https://github.com/raulsteinmetz/turtlebot-dreamerv3)
