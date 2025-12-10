@@ -4,8 +4,8 @@ This repository provides a ROS2-based framework for training and evaluating Deep
 
 It features implementations of several DRL agents, with a main contribution of **SAC-X-Hybrid (SAC-XH)**, a streamlined variant of SAC-X for multi-objective learning.
 
-| Stage 6 | Stage 4 |
-| :---: |:---:|
+|                                                            Stage 6                                                            |                                                            Stage 4                                                            |
+| :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://github.com/raulsteinmetz/turtlebot3-drl/assets/85199336/9f881aac-f87b-4b63-a323-655b47e3a18f" width="200"/> | <img src="https://github.com/raulsteinmetz/turtlebot3-drl/assets/85199336/007d7844-ebdb-47c3-b318-69e393d3c91d" width="200"/> |
 
 ## Getting Started
@@ -70,19 +70,6 @@ python test.py --agent <agent_name> --stage <stage_num> --lidar <lidar_points>
 ```
 
 The test results, including a video of the agent's performance, will be saved in the corresponding directory under `./best_models/`.
-
-## Citing This Work
-
-If you use this work in your research, please consider citing:
-
-```
-@article{your_citation_here,
-  title   = {Your Title Here},
-  author  = {Your Name Here},
-  journal = {Your Journal Here},
-  year    = {2024}
-}
-```
 
 ## Acknowledgements
 
