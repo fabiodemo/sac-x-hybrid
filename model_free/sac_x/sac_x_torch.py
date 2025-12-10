@@ -30,7 +30,7 @@ class Agent:
             checkpoint_dir (str): Directory to save the model checkpoints.
         """
         self.checkpoint_dir = checkpoint_dir
-        self.gamma = float(gamma.strip(','))  # Garantir que gamma seja um float
+        self.gamma = float(gamma.strip(','))  # Ensure gamma is a float
         self.tau = tau
         self.memory = ReplayBuffer(max_size, input_dims, n_actions)
         self.batch_size = batch_size
@@ -134,7 +134,7 @@ class Agent:
         via the meta-controller and updates networks accordingly.
         """
         if self.memory.mem_cntr < self.batch_size:
-            return None  # Verifica se há amostras suficientes para o treinamento
+            return None  # Check if there are enough samples for training
 
         state, action, reward, new_state, done = self.memory.sample_buffer(self.batch_size)
 
@@ -147,14 +147,14 @@ class Agent:
 
         current_policy_indices = self.meta_controller.decide_policy(state)
         
-        if len(current_policy_indices.shape) == 0:  # Manipula o tensor se for um único elemento
+        if len(current_policy_indices.shape) == 0:  # Handle the tensor if it is a single element
             current_policy_indices = current_policy_indices.unsqueeze(0)
         
         losses = []
         for idx, current_policy_index in enumerate(current_policy_indices):
-            current_policy = self.skills[current_policy_index.item()]  # Obtém a política de habilidade correspondente
+            current_policy = self.skills[current_policy_index.item()]  # Get the corresponding skill policy
             
-            # Extrai fatias específicas para processamento de etapa única
+            # Extract specific slices for single-step processing
             s, a, r, ns, d = state[idx], action[idx], reward[idx], new_state[idx], done[idx]
             s = s.unsqueeze(0) if s.dim() == 1 else s
             a = a.unsqueeze(0) if a.dim() == 1 else a
@@ -162,38 +162,38 @@ class Agent:
             d = d.unsqueeze(0) if d.dim() == 0 else d
             r = r.unsqueeze(0) if r.dim() == 0 else r
 
-            # Calcula recompensas intrínsecas para a política escolhida
+            # Calculate intrinsic rewards for the chosen policy
             intrinsic_reward = current_policy.compute_intrinsic_reward(s, a, ns, d)
 
-            # Combina recompensas intrínsecas e extrínsecas para sinal de treinamento total
+            # Combine intrinsic and extrinsic rewards for the total training signal
             total_reward = r + intrinsic_reward
             total_reward = total_reward.unsqueeze(0) if total_reward.dim() == 0 else total_reward
 
-            # Atualiza as redes críticas
+            # Update the critic networks
             self.critic_1.optimizer.zero_grad()
             self.critic_2.optimizer.zero_grad()
 
-            # Convertendo d para float e garantindo a forma correta
+            # Converting d to float and ensuring the correct shape
             d_float = d.float().view(-1, 1)
 
             target_value_ns = self.target_value(ns).view(-1)
             one_minus_d_float = (1 - d_float.view(-1))
             total_reward_view = total_reward.view(-1)
 
-            # Corrigindo o cálculo do q_hat para evitar o erro de indexação
-            # Parte 1: gamma * target_value_ns
+            # Correcting the q_hat calculation to avoid the indexing error
+            # Part 1: gamma * target_value_ns
             try:
                 part1 = self.gamma * target_value_ns
             except Exception as e:
                 print("Error in part1 calculation:", str(e))
 
-            # Parte 2: (gamma * target_value_ns) * one_minus_d_float
+            # Part 2: (gamma * target_value_ns) * one_minus_d_float
             try:
                 part2 = part1 * one_minus_d_float
             except Exception as e:
                 print("Error in part2 calculation:", str(e))
 
-            # Parte 3: (gamma * target_value_ns * one_minus_d_float) + total_reward_view
+            # Part 3: (gamma * target_value_ns * one_minus_d_float) + total_reward_view
             try:
                 q_hat = part2 + total_reward_view
             except Exception as e:
@@ -207,7 +207,7 @@ class Agent:
             self.critic_1.optimizer.step()
             self.critic_2.optimizer.step()
 
-            # Atualiza a rede do ator
+            # Update the actor network
             self.actor.optimizer.zero_grad()
             pred_actions, log_probs = self.actor.sample_normal(s, reparameterize=True)
             log_probs = log_probs.view(-1)
@@ -219,17 +219,17 @@ class Agent:
             actor_loss.backward()
             self.actor.optimizer.step()
 
-            # Atualização suave das redes-alvo
+            # Soft update of the target networks
             self.update_network_parameters()
 
-            # Treina o meta-controlador
+            # Train the meta-controller
             meta_loss = self.meta_controller.learn(s, total_reward, current_policy_index)
-            if meta_loss is not None:  # Verifica se meta_loss não é None
-                losses.append((critic_loss.item(), actor_loss.item(), meta_loss.item()))  # Usa .item() se não for None
+            if meta_loss is not None:  # Check if meta_loss is not None
+                losses.append((critic_loss.item(), actor_loss.item(), meta_loss.item()))  # Use .item() if it is not None
             else:
-                losses.append((critic_loss.item(), actor_loss.item(), 0))  # Usa um valor padrão se meta_loss for None
+                losses.append((critic_loss.item(), actor_loss.item(), 0))  # Use a default value if meta_loss is None
 
-        # Agrega perdas para relatórios ou depuração
+        # Aggregate losses for reporting or debugging
         return meta_loss
 
     

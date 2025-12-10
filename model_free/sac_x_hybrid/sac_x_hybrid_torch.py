@@ -58,7 +58,7 @@ class Agent:
 
     def log_stage_metrics(self, stage, episode, mean_reward, success_rate):
         """
-        Loga métricas do estágio atual.
+        Logs metrics for the current stage.
         """
         print(f"[Stage {stage}] Episode {episode} | Mean Reward: {mean_reward:.2f} | Success Rate: {success_rate:.2f}")
         if not os.path.exists(self.checkpoint_dir):
@@ -218,11 +218,11 @@ class Agent:
             new_state_tuple = tuple(new_states[i].cpu().numpy()) if isinstance(new_states[i], T.Tensor) else tuple(new_states[i])
             exploration_reward = reward_efficient_exploration(self.visited_states, new_state_tuple)
             
-            distance_to_target = states[i, 360]  # se 10 for o índice da distância
+            distance_to_target = states[i, 360]  # if 10 is the distance index
             if isinstance(distance_to_target, T.Tensor):
                 distance_to_target = distance_to_target.item()
-            # Exemplo de "quanto mais perto, maior a reward": (pode ser +1/dist ou -dist, etc.)
-            distance_reward = 1.0 / (distance_to_target + 1e-6)  # Recompensa maior se o robô estiver pertinho
+            # Example of "the closer, the greater the reward": (can be +1/dist or -dist, etc.)
+            distance_reward = 1.0 / (distance_to_target + 1e-6)  # Higher reward if the robot is very close
 
             skill_rewards.append([obstacles_reward, walls_reward, exploration_reward, distance_reward])
         return skill_rewards

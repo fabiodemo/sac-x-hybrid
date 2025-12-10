@@ -69,7 +69,7 @@ class Env(Node):
         self.get_entity_state_client = self.create_client(GetEntityState, '/demo/get_entity_state')
         self.set_entity_state_client = self.create_client(SetEntityState, '/demo/set_entity_state')
 
-        # pause for rolout
+        # pause for rollout
         self.pause_simulation_client = self.create_client(Empty, '/pause_physics')
         self.unpause_simulation_client = self.create_client(Empty, '/unpause_physics')
         
@@ -529,7 +529,7 @@ class Env(Node):
         Publish the robot's velocity based on the given action.
         :param action: The action to be executed.
         """
-        # linear should be aways positive, the robot does not go backwards
+        # linear should be always positive, the robot does not go backwards
         # angular vel is multiplied by two for better robot control
         linear_vel = np.abs(float(action[0])) * 0.1 # .25
         angular_vel = float(action[1]) * 2 * 0.1 # .25
