@@ -71,6 +71,10 @@ python test.py --agent <agent_name> --stage <stage_num> --lidar <lidar_points>
 
 The test results, including a video of the agent's performance, will be saved in the corresponding directory under `./best_models/`.
 
+## Training video
+[![Video](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5Pij7-XYFT3w_Pry6bs6YUARQMBMty6ctfg&s)](https://youtu.be/fA-_Mi_iMZ4")
+
+
 ## Acknowledgements
 
 The code on this repository was inspired by:
