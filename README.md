@@ -4,9 +4,9 @@ This repository provides a ROS2-based framework for training and evaluating Deep
 
 It features implementations of several DRL agents, with a main contribution of **SAC-X-Hybrid (SAC-XH)**, a streamlined variant of SAC-X for multi-objective learning.
 
-|                                                            Stage 6                                                            |                                                            Stage 4                                                            |
-| :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://github.com/raulsteinmetz/turtlebot3-drl/assets/85199336/9f881aac-f87b-4b63-a323-655b47e3a18f" width="200"/> | <img src="https://github.com/raulsteinmetz/turtlebot3-drl/assets/85199336/007d7844-ebdb-47c3-b318-69e393d3c91d" width="200"/> |
+Six training environments of increasing complexity were used, ranging from an empty room (Stage 1) to a cluttered open space with many obstacles (Stage 6). Stages 1–3 introduce static obstacles of varying shapes, while Stages 4–6 progressively increase obstacle density and layout difficulty.
+
+![Environments](figures/environments.tiff)
 
 ## Getting Started
 
