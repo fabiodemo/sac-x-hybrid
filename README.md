@@ -75,6 +75,12 @@ The test results, including a video of the agent's performance, will be saved in
 [![Video](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5Pij7-XYFT3w_Pry6bs6YUARQMBMty6ctfg&s)](https://youtu.be/fA-_Mi_iMZ4")
 
 
+## Publication
+
+This project implements the algorithms described in:
+
+> Demo Rosa F, Steinmetz R, Tello Gamarra DF. **Hybrid Soft Actor-Critic with Curriculum Learning for Sparse-Reward Mobile Robot Navigation**. *Journal of Intelligent & Fuzzy Systems: Applications in Engineering and Technology*. 2026;0(0). doi:[10.1177/18758967261431354](https://doi.org/10.1177/18758967261431354)
+
 ## Acknowledgements
 
 The code on this repository was inspired by:
