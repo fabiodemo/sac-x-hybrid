@@ -55,7 +55,7 @@ $r_{\text{explore}}(t) = -\log(n_{\text{visits}}(s_t)).$
 ### Optimization Objective
 The SAC-XH objective extends the standard SAC loss by adding auxiliary components:
 
-$\mathcal{L}_{SAC\text{-}XH} = \mathcal{L}_{SAC} + \sum_{i=1}^{N} \lambda_i \, \mathcal{L}_{aux}^{(i)}.$
+$$\mathcal{L}_{SAC\text{-}XH} = \mathcal{L}_{SAC} + \sum_{i=1}^{N} \lambda_i \, \mathcal{L}_{aux}^{(i)}.$$
 
 In practice, this formulation led to navigation patterns characterized by stable motion near obstacles and consistent distance maintenance, showing that auxiliary rewards helped the policy maintain consistency under sparse rewards.
 
