@@ -42,11 +42,11 @@ where $r_{\text{main}}(t)$ denotes the goal-oriented term, and $(\lambda_1, \lam
 
 The auxiliary functions are defined as:
 
-$r_{\text{collision}}(t) =
+$$r_{\text{collision}}(t) =
 \begin{cases}
     -\dfrac{\lambda_c}{d_{\min}(t)}, & \text{if } d_{\min}(t) < d_{\text{safe}},\\[6pt]
     0, & \text{otherwise,}
-\end{cases}$
+\end{cases}$$
 
 $r_{\text{wall}}(t) = -|d_{\min}(t) - d_{\text{target}}|,$
 
