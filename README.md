@@ -6,7 +6,7 @@ It features implementations of several DRL agents, with a main contribution of *
 
 Six training environments of increasing complexity were used, ranging from an empty room (Stage 1) to a cluttered open space with many obstacles (Stage 6). Stages 1–3 introduce static obstacles of varying shapes, while Stages 4–6 progressively increase obstacle density and layout difficulty.
 
-![Environments](figures/environments.tiff)
+![Environments](figures/environments.png)
 
 ## Getting Started
 
